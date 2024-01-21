@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head> <title>HTML Editor</title> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>
+	<script>
+	var ta;
+	function docwr(doc, w) { doc.write(w); doc.close(); }
+	docwr(document, '<frameset rows="50%,50%"><frame name="editor" /><frame name="result" /></frameset>');
+	docwr(window.editor.document, '<html><body style="margin:0"><textarea name="ta" wrap="hard" style="width:100%;height:100%;border:none;margin:0;resize:none;">1</textarea></body></html>');
+	ta = window.editor.document.getElementsByName("ta")[0];
+	ta.value='<h3>Welcome to our real-time HTML editor!</h3>';
+	ta.onkeyup=() => { docwr(window.result.document, ta.value); };
+	ta.onmouseup=() => { docwr(window.result.document, ta.value); };
+	docwr(window.result.document, ta.value);
+	</script>
+</html>
